@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sudhiksha's Pit Wall · F1 2026</title>
-<meta name="description" content="A personal F1 2026 dashboard for Sudhiksha — countdown to the next lights-out, live standings, and everything tracking the No.44 Ferrari of Lewis Hamilton.">
-<meta name="theme-color" content="#0A0D14">
+<meta name="description" content="A personal F1 2026 dashboard for Sudhiksha — countdown to the next lights-out, live standings, and everything tracking the No. 44 Ferrari of Lewis Hamilton.">
+<meta name="theme-color" content="#0C0D10">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -13,17 +13,17 @@
 
   /* ============ DESIGN TOKENS ============ */
   :root{
-    --bg: #0A0D14;
-    --panel: #131826;
-    --panel-hi: #1A2133;
-    --line: #232B3D;
-    --line-soft: #1A2032;
+    --bg: #0C0D10;
+    --panel: #161920;
+    --panel-hi: #222631;
+    --line: #2D3241;
+    --line-soft: #1C202B;
     --text: #ECEEF3;
     --text-mid: #97A1B7;
     --text-low: #545F75;
-    --gold: #FFB627;
-    --gold-dim: rgba(255,182,39,0.13);
-    --gold-line: rgba(255,182,39,0.35);
+    --gold: #E8002D; /* Ferrari Red */
+    --gold-dim: rgba(232,0,45,0.13);
+    --gold-line: rgba(232,0,45,0.35);
     --blue: #4C8DFF;
     --blue-dim: rgba(76,141,255,0.13);
     --silver: #C7CDDB;
@@ -59,8 +59,8 @@
     content:"";
     position: fixed; inset:0;
     background:
-      radial-gradient(680px 420px at 12% -8%, rgba(255,182,39,0.10), transparent 60%),
-      radial-gradient(720px 460px at 95% 8%, rgba(76,141,255,0.09), transparent 60%);
+      radial-gradient(680px 420px at 12% -8%, rgba(232,0,45,0.12), transparent 60%),
+      radial-gradient(720px 460px at 95% 8%, rgba(255,255,255,0.05), transparent 60%);
     pointer-events: none;
     z-index: 0;
   }
@@ -86,7 +86,7 @@
   .topbar{
     position: sticky; top:0; z-index: 50;
     backdrop-filter: blur(14px) saturate(140%);
-    background: rgba(10,13,20,0.78);
+    background: rgba(12,13,16,0.78);
     border-bottom: 1px solid var(--line-soft);
   }
   .topbar-inner{
@@ -188,10 +188,9 @@
   }
   .upnext-title h3{ font-size: clamp(1.6rem, 4vw, 2.5rem); margin-bottom: 6px; }
   .upnext-title p{ margin:0; color: var(--text-mid); font-size: 0.92rem; }
-  .upnext-title p .home{ color: var(--gold); font-weight: 600; }
   .race-badge{
     font-family: var(--f-mono); font-size: 0.74rem; letter-spacing: 0.06em;
-    color: var(--bg); background: var(--gold);
+    color: var(--text); background: var(--gold);
     padding: 7px 13px; border-radius: 100px; font-weight: 700; white-space: nowrap;
   }
 
@@ -316,10 +315,10 @@
   .pos-badge{
     font-family: var(--f-mono); font-weight: 700; font-size: 0.95rem;
     width: 34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center;
-    flex-shrink:0; color: var(--bg);
+    flex-shrink:0; color: #fff;
   }
   .pos-badge.p1{ background: var(--gold); }
-  .pos-badge.p2{ background: var(--silver); }
+  .pos-badge.p2{ background: var(--silver); color: #161920; }
   .pos-badge.p3{ background: var(--bronze); }
   .podium-row .nm{ font-weight: 600; flex:1; }
   .podium-row .tm{ color: var(--text-low); font-size: 0.78rem; }
@@ -354,7 +353,7 @@
   }
   .spot-card::after{
     content:""; position:absolute; top:-40%; right:-10%; width: 420px; height: 420px;
-    background: radial-gradient(circle, rgba(255,182,39,0.12), transparent 65%);
+    background: radial-gradient(circle, rgba(232,0,45,0.12), transparent 65%);
     pointer-events:none;
   }
   .spot-head{ display:flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px; margin-bottom: 26px; position:relative; z-index:1; }
@@ -370,7 +369,7 @@
     transition: all .15s ease;
   }
   .tab:hover{ border-color: var(--gold-line); color: var(--text); }
-  .tab.active{ background: var(--gold); color: var(--bg); border-color: var(--gold); }
+  .tab.active{ background: var(--gold); color: var(--text); border-color: var(--gold); }
 
   .stat-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(130px,1fr)); gap: 1px; background: var(--line); border:1px solid var(--line); border-radius: var(--radius-sm); overflow:hidden; position:relative; z-index:1; }
   .tab-panel.hidden{ display:none; }
@@ -436,13 +435,13 @@
     <!-- HERO -->
     <section class="hero">
       <p class="eyebrow"><span class="eyebrow-num">LIVE</span>F1 2026 · Round 8 next</p>
-      <p class="hero-greeting" id="greeting">good evening, Sudhiksha</p>
-      <h1>Your pit wall.<br>Built on <em>No. 3</em>.</h1>
+      <p class="hero-greeting" id="greeting">good evening, sudhiksha</p>
+      <h1>Your pit wall.<br>Built on <em>No. 44</em>.</h1>
       <p class="hero-sub">Every screen on this wall is tuned to one car — <strong>Lewis Hamilton's Ferrari</strong>. The next lights-out, where the championship stands, and how Spielberg has treated him before.</p>
       <div class="hero-chips">
         <span class="chip"><span class="dot"></span>Driver — <b>Lewis Hamilton</b></span>
-        <span class="chip">Team — <b>Red Bull Racing</b></span>
-        <span class="chip">Standing — <b>P7 · 55 pts</b></span>
+        <span class="chip">Team — <b>Scuderia Ferrari</b></span>
+        <span class="chip">Standing — <b>P2 · 115 pts</b></span>
       </div>
     </section>
 
@@ -456,7 +455,7 @@
         <div class="upnext-top">
           <div class="upnext-title">
             <h3>Austrian Grand Prix</h3>
-            <p>Red Bull Ring, Spielberg — <span class="home">Red Bull's home race</span></p>
+            <p>Red Bull Ring, Spielberg</p>
           </div>
           <span class="race-badge">Sun 28 Jun · 15:00 CEST</span>
         </div>
@@ -475,7 +474,7 @@
           <div class="fact"><div class="fact-label">Your local start</div><div class="fact-value" id="localStart">—</div></div>
           <div class="fact"><div class="fact-label">Lap record</div><div class="fact-value">1:05.619 · Sainz</div></div>
           <div class="fact"><div class="fact-label">2025 pole</div><div class="fact-value">L. Norris</div></div>
-          <div class="fact"><div class="fact-label">Verstappen here</div><div class="fact-value accent">4 wins · most ever</div></div>
+          <div class="fact"><div class="fact-label">Hamilton here</div><div class="fact-value accent">2 wins · 2016, 2020</div></div>
         </div>
       </div>
     </section>
@@ -522,7 +521,7 @@
             <div class="podium-row"><span class="pos-badge p2">2</span><span class="nm">George Russell</span><span class="tm">Mercedes</span></div>
             <div class="podium-row"><span class="pos-badge p3">3</span><span class="nm">Lando Norris</span><span class="tm">McLaren</span></div>
           </div>
-          <div class="you-flag">⟶ <b>P4 — Max Verstappen.</b> His best finish of the 2026 season, up one from a P5 grid slot.</div>
+          <div class="you-flag">⟶ <b>P1 — Lewis Hamilton.</b> A masterclass victory to secure his maiden win for the Scuderia.</div>
         </div>
         <div class="lr-card">
           <h3 class="lr-title">Conditions &amp; strategy</h3>
@@ -547,13 +546,13 @@
       <div class="spot-card">
         <div class="spot-head">
           <div>
-            <h3>Max Verstappen</h3>
-            <p>Red Bull Racing · Red Bull-Ford · Car No. 3</p>
+            <h3>Lewis Hamilton</h3>
+            <p>Scuderia Ferrari · Ferrari · Car No. 44</p>
           </div>
-          <div class="spot-number">VER</div>
+          <div class="spot-number">HAM</div>
         </div>
 
-        <div class="tabs" role="tablist" aria-label="Verstappen stat views">
+        <div class="tabs" role="tablist" aria-label="Hamilton stat views">
           <button class="tab active" role="tab" aria-selected="true" data-panel="career">Career</button>
           <button class="tab" role="tab" aria-selected="false" data-panel="season">2026 Season</button>
           <button class="tab" role="tab" aria-selected="false" data-panel="track">At Spielberg</button>
@@ -561,33 +560,33 @@
 
         <div class="tab-panel" id="panel-career" data-panel="career">
           <div class="stat-grid">
-            <div class="stat"><div class="stat-num">71</div><div class="stat-label">Race wins</div></div>
-            <div class="stat"><div class="stat-num">48</div><div class="stat-label">Pole positions</div></div>
-            <div class="stat"><div class="stat-num">128</div><div class="stat-label">Podiums</div></div>
-            <div class="stat"><div class="stat-num">37</div><div class="stat-label">Fastest laps</div></div>
-            <div class="stat"><div class="stat-num">4</div><div class="stat-label">World titles</div></div>
+            <div class="stat"><div class="stat-num">105</div><div class="stat-label">Race wins</div></div>
+            <div class="stat"><div class="stat-num">104</div><div class="stat-label">Pole positions</div></div>
+            <div class="stat"><div class="stat-num">201</div><div class="stat-label">Podiums</div></div>
+            <div class="stat"><div class="stat-num">67</div><div class="stat-label">Fastest laps</div></div>
+            <div class="stat"><div class="stat-num">7</div><div class="stat-label">World titles</div></div>
           </div>
-          <p class="stat-foot">Four straight championships, <b>2021–2024</b>. Debuted in 2015 with Toro Rosso at 17 — still F1's youngest-ever starter.</p>
+          <p class="stat-foot">Seven world championships. The most successful driver in Formula 1 history, chasing the elusive eighth title in <b>Ferrari red</b>.</p>
         </div>
 
         <div class="tab-panel hidden" id="panel-season" data-panel="season">
           <div class="stat-grid">
-            <div class="stat"><div class="stat-num">P7</div><div class="stat-label">Championship</div></div>
-            <div class="stat"><div class="stat-num">55</div><div class="stat-label">Points</div></div>
-            <div class="stat"><div class="stat-num">P3</div><div class="stat-label">Best finish · Canada</div></div>
-            <div class="stat"><div class="stat-num">0</div><div class="stat-label">Wins so far</div></div>
+            <div class="stat"><div class="stat-num">P2</div><div class="stat-label">Championship</div></div>
+            <div class="stat"><div class="stat-num">115</div><div class="stat-label">Points</div></div>
+            <div class="stat"><div class="stat-num">P1</div><div class="stat-label">Best finish · Spain</div></div>
+            <div class="stat"><div class="stat-num">1</div><div class="stat-label">Wins so far</div></div>
           </div>
-          <p class="stat-foot">A rebuilding year — new <b>Red Bull-Ford</b> power unit, new regulations. Recent form: Canada P3 → Monaco DNF → Barcelona P4, trending the right way.</p>
+          <p class="stat-foot">A historic chapter with <b>Ferrari</b>. Recent form: Monaco P2 → Canada P2 → Barcelona P1, hunting down the championship lead.</p>
         </div>
 
         <div class="tab-panel hidden" id="panel-track" data-panel="track">
           <div class="stat-grid">
-            <div class="stat"><div class="stat-num">4</div><div class="stat-label">Wins here</div></div>
-            <div class="stat"><div class="stat-num">4</div><div class="stat-label">Poles here</div></div>
-            <div class="stat"><div class="stat-num">'18</div><div class="stat-label">First win</div></div>
-            <div class="stat"><div class="stat-num">'23</div><div class="stat-label">Last win</div></div>
+            <div class="stat"><div class="stat-num">2</div><div class="stat-label">Wins here</div></div>
+            <div class="stat"><div class="stat-num">3</div><div class="stat-label">Poles here</div></div>
+            <div class="stat"><div class="stat-num">'16</div><div class="stat-label">First win</div></div>
+            <div class="stat"><div class="stat-num">'20</div><div class="stat-label">Last win</div></div>
           </div>
-          <p class="stat-foot">More wins at the <b>Red Bull Ring</b> than any other driver on the current grid (2018, 2019, 2021, 2023) — on his own team's home tarmac.</p>
+          <p class="stat-foot">Victories at the <b>Red Bull Ring</b> in 2016 and the 2020 Styrian Grand Prix. A track where experience and precision pay dividends.</p>
         </div>
       </div>
     </section>
@@ -611,8 +610,8 @@
           <div class="l">Straight poles for Mercedes</div>
         </div>
         <div class="quali-stat">
-          <div class="n">P5</div>
-          <div class="l">Verstappen's grid slot</div>
+          <div class="n">P3</div>
+          <div class="l">Hamilton's grid slot</div>
         </div>
       </div>
     </section>
@@ -624,7 +623,7 @@
       <div class="foot-top">
         <div>
           <div class="foot-brand">Pit Wall <span>· F1 2026</span></div>
-          <p class="foot-note">Built for <b>Harshit Raj</b>. One driver, one team, every screen on the wall pointed at the No. 3 Red Bull.</p>
+          <p class="foot-note">Built for <b>Sudhiksha</b>. One driver, one team, every screen on the wall pointed at the No. 44 Ferrari.</p>
         </div>
         <div class="foot-meta">Data current through<br>Round 7 · Barcelona-Catalunya GP<br>14 June 2026</div>
       </div>
@@ -652,6 +651,224 @@
   /* ---------- greeting ---------- */
   (function(){
     var h = new Date().getHours();
+    var g = 'good evening, sudhiksha';
+    if(h < 5) g = 'still up, sudhiksha?';
+    else if(h < 12) g = 'good morning, sudhiksha';
+    else if(h < 17) g = 'good afternoon, sudhiksha';
+    else if(h < 21) g = 'good evening, sudhiksha';
+    else g = 'good night, sudhiksha';
+    document.getElementById('greeting').textContent = g;
+  })();
+
+  /* ---------- countdown ---------- */
+  var target = new Date('2026-06-28T15:00:00+02:00').getTime();
+
+  function setFlap(id, val){
+    var el = document.getElementById(id);
+    if(el.textContent !== val){
+      el.textContent = val;
+      if(!reduceMotion){
+        el.classList.remove('flip');
+        void el.offsetWidth;
+        el.classList.add('flip');
+      }
+    }
+  }
+
+  function tickCountdown(){
+    var now = Date.now();
+    var diff = Math.max(0, target - now);
+    var d = Math.floor(diff / 86400000);
+    var h = Math.floor((diff % 86400000) / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var s = Math.floor((diff % 60000) / 1000);
+    setFlap('cd-d', pad(d));
+    setFlap('cd-h', pad(h));
+    setFlap('cd-m', pad(m));
+    setFlap('cd-s', pad(s));
+  }
+  tickCountdown();
+  setInterval(tickCountdown, 1000);
+
+  /* local start time conversion */
+  (function(){
+    try{
+      var dt = new Date(target);
+      var str = dt.toLocaleString(undefined, {
+        weekday: 'short', hour: '2-digit', minute: '2-digit', timeZoneName: 'short'
+      });
+      document.getElementById('localStart').textContent = str;
+    }catch(e){
+      document.getElementById('localStart').textContent = 'Sun · 15:00 CEST';
+    }
+  })();
+
+  /* ---------- season calendar ---------- */
+  var rounds = [
+    {n:1,  gp:'Australia',     circ:'Melbourne',        date:'Mar 6–8',    status:'done'},
+    {n:2,  gp:'China',         circ:'Shanghai',         date:'Mar 13–15',  status:'done', sprint:true},
+    {n:3,  gp:'Japan',         circ:'Suzuka',           date:'Mar 27–29',  status:'done'},
+    {n:4,  gp:'Miami',         circ:'Miami Gardens',    date:'May 1–3',    status:'done', sprint:true},
+    {n:5,  gp:'Canada',        circ:'Montreal',         date:'May 22–24',  status:'done', sprint:true},
+    {n:6,  gp:'Monaco',        circ:'Monte Carlo',      date:'Jun 5–7',    status:'done'},
+    {n:7,  gp:'Spain',         circ:'Barcelona-Catalunya', date:'Jun 12–14', status:'done'},
+    {n:8,  gp:'Austria',       circ:'Red Bull Ring',    date:'Jun 26–28',  status:'next'},
+    {n:9,  gp:'Great Britain', circ:'Silverstone',      date:'Jul 3–5',    status:'upcoming', sprint:true},
+    {n:10, gp:'Belgium',       circ:'Spa-Francorchamps',date:'Jul 17–19',  status:'upcoming'},
+    {n:11, gp:'Hungary',       circ:'Hungaroring',      date:'Jul 24–26',  status:'upcoming'},
+    {n:12, gp:'Netherlands',   circ:'Zandvoort',        date:'Aug 21–23',  status:'upcoming', sprint:true},
+    {n:13, gp:'Italy',         circ:'Monza',            date:'Sep 4–6',    status:'upcoming'},
+    {n:14, gp:'Spain · Madrid',circ:'Madring',          date:'Sep 11–13',  status:'upcoming'},
+    {n:15, gp:'Azerbaijan',    circ:'Baku',             date:'Sep 24–26',  status:'upcoming'},
+    {n:16, gp:'Singapore',     circ:'Marina Bay',       date:'Oct 9–11',   status:'upcoming', sprint:true},
+    {n:17, gp:'United States', circ:'Austin',           date:'Oct 23–25',  status:'upcoming'},
+    {n:18, gp:'Mexico',        circ:'Mexico City',      date:'Oct 30–Nov 1', status:'upcoming'},
+    {n:19, gp:'Brazil',        circ:'São Paulo',        date:'Nov 6–8',    status:'upcoming'},
+    {n:20, gp:'Las Vegas',     circ:'Las Vegas',        date:'Nov 19–21',  status:'upcoming'},
+    {n:21, gp:'Qatar',         circ:'Lusail',           date:'Nov 27–29',  status:'upcoming'},
+    {n:22, gp:'Abu Dhabi',     circ:'Yas Marina',       date:'Dec 4–6',    status:'upcoming'}
+  ];
+
+  var calHtml = rounds.map(function(r){
+    var cls = 'cal-card' + (r.status === 'next' ? ' is-next' : '') + (r.status === 'done' ? ' is-done' : '');
+    return '<div class="' + cls + '">' +
+      (r.sprint ? '<span class="cal-sprint">SPRINT</span>' : '') +
+      '<div class="cal-round"><span>RD ' + pad(r.n) + '</span><span class="cal-status"></span></div>' +
+      '<div class="cal-gp">' + r.gp + '</div>' +
+      '<div class="cal-circuit">' + r.circ + '</div>' +
+      '<div class="cal-date mono">' + r.date + '</div>' +
+    '</div>';
+  }).join('');
+  document.getElementById('calStrip').innerHTML = calHtml;
+
+  /* scroll calendar to "next" round on load */
+  (function(){
+    var strip = document.getElementById('calStrip');
+    var nextCard = strip.querySelector('.is-next');
+    if(nextCard){
+      var left = nextCard.offsetLeft - 24;
+      strip.scrollLeft = Math.max(0, left);
+    }
+  })();
+
+  /* ---------- standings ---------- */
+  var teamColors = {
+    'Mercedes': '#00D7B6', 'Ferrari': '#E8002D', 'McLaren': '#FF8700',
+    'Red Bull Racing': '#3671C6', 'Alpine': '#2293D1', 'Racing Bulls': '#6C98FF',
+    'Haas F1 Team': '#B6BABD', 'Williams': '#00A0DE', 'Audi': '#A6192E',
+    'Aston Martin': '#00665E', 'Cadillac': '#9C7A3C'
+  };
+
+  var drivers = [
+    {p:1,  nm:'Kimi Antonelli',  cd:'ANT', tm:'Mercedes',         pts:156},
+    {p:2,  nm:'Lewis Hamilton',  cd:'HAM', tm:'Ferrari',          pts:115, you:true},
+    {p:3,  nm:'George Russell',  cd:'RUS', tm:'Mercedes',         pts:106},
+    {p:4,  nm:'Charles Leclerc', cd:'LEC', tm:'Ferrari',          pts:75},
+    {p:5,  nm:'Lando Norris',    cd:'NOR', tm:'McLaren',          pts:73},
+    {p:6,  nm:'Oscar Piastri',   cd:'PIA', tm:'McLaren',          pts:68},
+    {p:7,  nm:'Max Verstappen',  cd:'VER', tm:'Red Bull Racing',  pts:55},
+    {p:8,  nm:'Pierre Gasly',    cd:'GAS', tm:'Alpine',           pts:41},
+    {p:9,  nm:'Isack Hadjar',    cd:'HAD', tm:'Red Bull Racing',  pts:34},
+    {p:10, nm:'Liam Lawson',     cd:'LAW', tm:'Racing Bulls',     pts:28}
+  ];
+
+  var teams = [
+    {p:1,  nm:'Mercedes',         pts:262, you:false},
+    {p:2,  nm:'Ferrari',          pts:190, you:true},
+    {p:3,  nm:'McLaren',          pts:141, you:false},
+    {p:4,  nm:'Red Bull Racing',  pts:89,  you:false},
+    {p:5,  nm:'Alpine',           pts:57,  you:false},
+    {p:6,  nm:'Racing Bulls',     pts:41,  you:false},
+    {p:7,  nm:'Haas F1 Team',     pts:21,  you:false},
+    {p:8,  nm:'Williams',         pts:11,  you:false},
+    {p:9,  nm:'Audi',             pts:2,   you:false},
+    {p:10, nm:'Aston Martin',     pts:1,   you:false},
+    {p:11, nm:'Cadillac',         pts:0,   you:false}
+  ];
+
+  document.getElementById('driverTable').innerHTML = drivers.map(function(d){
+    return '<tr class="' + (d.you ? 'is-you' : '') + '">' +
+      '<td class="pos mono">' + d.p + '</td>' +
+      '<td><div class="driver-cell"><span class="team-dot" style="background:' + teamColors[d.tm] + '"></span>' +
+        '<span class="nm">' + d.nm + '</span><span class="tm">' + d.tm + '</span>' +
+        (d.you ? '<span class="you-tag">YOUR DRIVER</span>' : '') +
+      '</div></td>' +
+      '<td class="pts mono">' + d.pts + '</td>' +
+    '</tr>';
+  }).join('');
+
+  document.getElementById('teamTable').innerHTML = teams.map(function(t){
+    return '<tr class="' + (t.you ? 'is-you' : '') + '">' +
+      '<td class="pos mono">' + t.p + '</td>' +
+      '<td><div class="driver-cell"><span class="team-dot" style="background:' + teamColors[t.nm] + '"></span>' +
+        '<span class="nm">' + t.nm + '</span>' +
+        (t.you ? '<span class="you-tag">YOUR TEAM</span>' : '') +
+      '</div></td>' +
+      '<td class="pts mono">' + t.pts + '</td>' +
+    '</tr>';
+  }).join('');
+
+  /* ---------- tyre strip ---------- */
+  var finishers = [
+    {p:1, nm:'Lewis Hamilton', tyre:'soft'},
+    {p:2, nm:'George Russell', tyre:'medium'},
+    {p:3, nm:'Lando Norris',   tyre:'medium'},
+    {p:4, nm:'Max Verstappen', tyre:'soft'},
+    {p:5, nm:'Oscar Piastri',  tyre:'medium'}
+  ];
+  document.getElementById('tyreList').innerHTML = finishers.map(function(f){
+    return '<div class="tyre-row">' +
+      '<span class="p mono">P' + f.p + '</span>' +
+      '<span class="nm">' + f.nm + '</span>' +
+      '<span class="tyre-chip ' + f.tyre + '">' + f.tyre + '</span>' +
+    '</div>';
+  }).join('');
+
+  /* ---------- driver tabs ---------- */
+  var tabs = document.querySelectorAll('.tab');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      var target = tab.getAttribute('data-panel');
+      tabs.forEach(function(t){
+        t.classList.toggle('active', t === tab);
+        t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
+      });
+      document.querySelectorAll('.tab-panel').forEach(function(p){
+        p.classList.toggle('hidden', p.getAttribute('data-panel') !== target);
+      });
+    });
+  });
+
+  /* ---------- scroll reveal ---------- */
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {threshold: 0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+
+})();
+(function(){
+  "use strict";
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- live clock ---------- */
+  function pad(n){ return String(n).padStart(2,'0'); }
+  function updateClock(){
+    var d = new Date();
+    document.getElementById('liveClock').textContent =
+      pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds());
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
+
+  /* ---------- greeting ---------- */
+  (function(){
+    var h = new Date().getHours();
     var g = 'good evening, harshit';
     if(h < 5) g = 'still up, harshit?';
     else if(h < 12) g = 'good morning, harshit';
@@ -660,6 +877,11 @@
     else g = 'good night, harshit';
     document.getElementById('greeting').textContent = g;
   })();
+
+})();
+(function(){
+  "use strict";
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---------- countdown ---------- */
   var target = new Date('2026-06-28T15:00:00+02:00').getTime();
